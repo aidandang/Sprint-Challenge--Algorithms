@@ -109,21 +109,26 @@ class SortingRobot:
 
             # moving robot to the right one position at a time until it reaches the end of the list    
             while (self.can_move_right()):
+                
+                # the robot hold item of its position
                 self.swap_item()
+                # the robot move to the next position
                 self.move_right()
 
+                # if the item robot holding <= the current position value then the robot go back and return item to its original position.
                 if (self.compare_item() == 0 or self.compare_item() == -1):
                     self.move_left()
                     self.swap_item()
+                    # after returning item, the robot move to the next position.
                     self.move_right()
 
+                # if the item robot holding > the current position value then the robot swap then bring the new item back to the previous position.
                 if (self.compare_item() == 1):
                     self.swap_item()
                     self.move_left()
                     self.swap_item()
                     self.move_right()
                     self.set_light_on()
-
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
